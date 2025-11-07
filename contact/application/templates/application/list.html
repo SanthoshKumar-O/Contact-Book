@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>All contacts</title>
+        <style>
+            .listall{
+                display: grid;
+                grid-template-columns: auto;
+            }
+            .single{
+                display:flex;
+                margin-left: auto;
+                margin-right: auto;
+                width:600px;
+                height:auto;
+                padding:20px 50px;
+                text-align: left;
+                background-color: cornsilk;
+                border-radius: 25px;
+            }
+            .listall h1{
+                font-size: 35px;
+                font-style: italic;
+            }
+            .head{
+                display:flex;
+                justify-content: space-between;
+            }
+            .head h1{ 
+                font-size: 60px;
+                text-align: center;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color: firebrick;
+                margin-right: 350px;
+            }
+            .head .home{
+                color:lightskyblue;
+                background-color: aliceblue;
+                border:3px solid black;
+                width: 35px;
+                height: 35px;
+                font-size: 30px;
+                padding:5px 6px;
+                margin-left:30px;
+                border-radius: 15px;
+            }
+            p{
+                text-align: center;
+                font-size: 25px;
+                color:red;
+            }
+            input{
+                margin-left:30px;
+                background-color: red;
+                margin-top:80px;
+                padding:5px 10px;
+                border-radius: 5px;
+            }
+            button{
+                margin-left:420px;
+                margin-top: 30px;
+                border-radius: 20px;
+                transition: transform .2s;
+            }
+            button:hover{
+                cursor: pointer;
+                transform: scale(1.5);
+            }
+            input:hover{
+                cursor: pointer;
+                transform: scale(1.5);
+            }
+        </style>
+        <script>
+            function deleteit(){
+              if (confirm("Are you sure you want to delete this contact permanently?"))
+              {
+                alert("Contact deleted successfully.");
+                return true;
+              }
+              else{
+                alert("Deletion cancelled.");
+                return false;
+              }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="head">
+        <a href="/"><div class="home">🏠︎</div></a>
+        <h1><b>Contact list</b></h1>
+        </div>
+        <div class="listall">
+            {% for contact in contacts %}
+            <div class="single">
+            <div>
+            <h1>{{contact.name}}</h1>
+            <pre>Name          : {{contact.name}}</pre>
+            <pre>Mobile Number : {{contact.number}}</pre>
+            <pre>E-mail        : {{contact.email}}</pre>
+            <pre>Address       : {{contact.address}}</pre>
+            </div>
+            <div>
+            <form action="{% url 'delete_contact' contact.id %}" method="POST" onsubmit="return deleteit()">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+            </form>
+            </div>
+            </div>
+            <br>
+            {% empty %}
+            <p>No contact found.</p>
+            {% endfor %}
+        </div>
+        <div class="add">
+            <a href="/add/"><button>➕ ADD NEW CONTACT</button></a>
+        </div>
+    </body>
+</html>

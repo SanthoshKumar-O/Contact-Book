@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Sign up</title>
+        <style>
+            h2{
+                text-align:center;
+                color:dodgerblue;
+                margin-top: 20px;
+                font-size: 60px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+            .end{
+                font-style: italic;
+                text-align: center;
+                margin-top:40px;
+            }
+            form{
+                margin-left:400px;
+                margin-top:10px;
+                width:180px;
+                height:auto;
+            }
+            label{
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+            }
+            input{
+                border:2px solid black;
+                border-radius:5px;
+            }
+            #err{
+                color: red;
+                text-align: center;
+            }
+            button{
+                width:80px;
+                height:35px;
+                border-radius: 3px;
+                background-color: deepskyblue;
+                color:aliceblue;
+                margin-top:10px;
+            }
+            button:hover{
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Create Account</h2>
+
+        {% if messages %}
+            {%for msg in messages%}
+              <p id="err">{{msg}}</p>
+            {%endfor%}
+        {%endif%}
+
+        <form method="POST">
+            {%csrf_token%}
+            <label>Username :</label><br>
+            <input type="text" name="username" placeholder="Enter a username" required><br><br>
+            <label>Password :</label><br>
+            <input type="text" name="password" placeholder="Enter a password" required><br><br>
+            <label>Confirm password :</label><br>
+            <input type="text" name="confirm" placeholder="Password(again)" required><br><br>
+            <center><button type="submit">Sign up</button></center>
+        </form>
+        <div class="end">
+        <a href="{% url 'welcome' %}" id="link">Back</a>
+        <p id="end">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </body>
+</html>

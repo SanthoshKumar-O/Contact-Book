@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <title>Search contacts</title>
+        <style>
+            .single{
+                display:flex;
+                margin-left: auto;
+                margin-right: auto;
+                width:600px;
+                height:auto;
+                padding:20px 50px;
+                text-align: left;
+                background-color: cornsilk;
+                border-radius: 25px;
+            }
+            .head{
+                display:flex;
+                justify-content:space-between;
+            }
+            .head h1{ 
+                font-size: 60px;
+                text-align: center;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color: firebrick;
+                margin-right: 350px;
+            }
+            .head .home{
+                color:lightskyblue;
+                background-color: aliceblue;
+                border:3px solid black;
+                width: 35px;
+                height: 35px;
+                font-size: 30px;
+                padding:5px 6px;
+                margin-left:30px;
+                border-radius: 15px;
+            }
+            p{
+                text-align: center;
+                font-size: 25px;
+                color:red;
+            }
+            form{
+                text-align: center;
+            }
+            #how{
+                color: cornsilk;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                background-color: darkgray;
+                border-radius: 5px;
+                padding: 5px 10px;
+            }
+            #searchc{
+                color: darkgrey;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                background-color: cornsilk;
+                border-radius: 5px;  
+                padding: 5px 15px;
+            }
+            #but{
+                background-color: lightblue;
+                border-radius: 20px;
+                padding: 5px 10px;
+                margin-left:30px;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            #but:hover{
+                cursor: pointer;
+            }
+            #btn{
+                font-size:25px;
+                border-radius: 10px;
+                margin-top:40px;
+                margin-left:100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="head">
+        <a href="/"><div class="home">🏠︎</div></a>
+        <h1><b>Search Contacts</b></h1>
+        </div>
+        <form method="GET" action="">
+            <select name="how" onchange="update()" id="how">
+                <option value="name">Search by name</option>
+                <option value="number">Search by number</option>
+            </select>
+            <input type="text" name="searchc" placeholder="Enter name" id="searchc">
+            <input type="submit" value="search" id="but">
+            <a href="/search/"><button type="button" id="but">Clear</button></a>
+        </form>
+        {% for contact in contacts %}
+        <div class="single">
+            <div>
+            <h1>{{contact.name}}</h1>
+            <pre>Name          : {{contact.name}}</pre>
+            <pre>Mobile Number : {{contact.number}}</pre>
+            <pre>E-mail        : {{contact.email}}</pre>
+            <pre>Address       : {{contact.address}}</pre>
+        </div>
+        <div>
+            <a href="{% url 'update_contact' contact.id %}">
+                <button type="button" id="btn">📝</button>
+            </a>
+        </div>
+        </div><br>
+            {% empty %}
+                <p>No contacts found.</p>
+            {% endfor %}
+        <script>
+            function update(){
+                option=document.getElementById("how").value;
+                input=document.getElementById("searchc");
+                if (option==="name"){
+                    input.placeholder="Enter name";
+                }
+                else{
+                    input.placeholder="Enter number";
+                }
+            }
+        </script>
+    </body>
+</html>

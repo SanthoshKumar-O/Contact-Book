@@ -1,0 +1,51 @@
+{% load static %}
+<html>
+    <head>
+        <title>Contact Book</title>
+        <style>
+            .container{
+                display:flex;
+            }
+            h1{
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: 80px;
+                padding:0px 80px;
+            }
+            button{
+                font-size: 20px;
+                width:200px;
+                height:100px;
+                background-color: lightblue;
+                border-radius: 20px;
+                padding: 20px 40px;
+                margin-left: 25px;
+                margin-top: 30px;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+            button:hover{
+                cursor:pointer;
+                background-color: cadetblue;
+            }
+            #log{
+                margin-left:auto;
+                margin-right:30px;
+                text-decoration: None;
+                color:blue;
+                font-size:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img src="{% static 'application/images/contactlogo.jpg' %}" width="200px" height="220px">
+            <h1>Contact Book</h1>
+            <a href="{% url 'logout' %}" id="log"><p>logout</p></a>
+        </div>
+        <div class="option">
+            <a href="/add/"><button type="button">➕ ADD NEW CONTACT</button></a>
+            <a href="/list/"><button type="button">📋 LIST ALL CONTACTS</button></a>
+            <a href="/search/"><button type="button">🔍 SEARCH CONTACT</button></a>
+            <a href="/search/"><button type="button">⚙️ UPDATE CONTACT</button></a>
+        </div>
+    </body>
+</html>

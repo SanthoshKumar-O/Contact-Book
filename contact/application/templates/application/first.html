@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>Add Contact</title>
+        <style>
+            body {
+                background-color: beige;
+            }
+            label{
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .box{
+                border-color: black;
+                border-radius: 5px;
+            }
+            .form{
+                margin-left:280px;
+                margin-top:5px;
+                text-align: left;
+                background-color: burlywood;
+                width:450px;
+                height:340px;
+                padding:20px 20px;
+                border-radius: 40px;
+            }
+            h1{
+                font-size: 50px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                text-align: center;
+            }
+            button{
+                margin-left:80px;
+                border-radius: 20px;
+                background-color: lightblue;
+                width:70px;
+                height:40px;
+            }
+            p{
+                color:red;
+                font-size: 15px;
+            }
+            button:hover{
+                cursor: pointer;
+            }
+            .head{
+                display:flex;
+                justify-content: space-between;
+            }
+            .head h1{ 
+                font-size: 40px;
+                text-align: center;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color: firebrick;
+                margin-right: 380px;
+            }
+            .head .home{
+                color:lightskyblue;
+                background-color: aliceblue;
+                border:3px solid black;
+                width: 35px;
+                height: 35px;
+                font-size: 30px;
+                padding:5px 6px;
+                margin-left:30px;
+                border-radius: 15px;
+            }
+        </style>
+        <script type="text/javascript">
+            function clearall(){
+                document.getElementById("i1").value="";
+                document.getElementById("i2").value="";
+                document.getElementById("i3").value="";
+                document.getElementById("i4").value="";
+                document.getElementById("i5").value="";
+                let msg=document.getElementById("i5");
+                if (msg){
+                    msg.innerText="";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="head">
+        <a href="/"><div class="home">🏠︎</div></a>
+        <h1><b>Add contact</b></h1>
+        </div>
+        <div class="form">
+        <form method="POST">
+            {% csrf_token %}
+            <label>Enter the name of the contact</label><br>
+            <input type="text" name="name" id="i1" class="box" placeholder="NAME"><br><br>
+            <label>Enter the mobile number</label><br>
+            <input type="text" name="no" placeholder="MOBILE NUMBER" id="i2" class="box"><br><br>
+            <label>Enter the Email Address</label><br>
+            <input type="text" name="mail" placeholder="E-MAIL" id="i3" class="box"><br><br>
+            <label>Enter the Residential Address</label><br>
+            <textarea rows="5" cols="50" name="address" placeholder="ADDRESS" id="i4" class="box"></textarea><br>
+            {% if msg %}
+                <p align="center" id="i5">{{msg}}</p>
+            {% else %}
+                <p align="center" id="i5"></p>
+            {% endif %}
+            <button type="submit">SAVE</button>
+            <button type="button" onclick="clearall()">CLEAR</button>
+        </form>
+        </div>
+    </body>
+</html>
