@@ -28,3 +28,4 @@ It allows users to **add, view, search, update, and delete** contacts securely w
 | Alerts | Django `messages` framework |
 
 ---
+
