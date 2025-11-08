@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$i&+i61ccb-cof4eszt5)@kt0@es-c!3tjz7&erx4i&jy&u*z(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['Contact-Book.onrender.com','127.0.0.1','localhost']
 
 
 # Application definition
