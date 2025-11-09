@@ -5,6 +5,10 @@ It allows users to **add, view, search, update, and delete** contacts securely w
 
 ---
 
+## 🌐 Live Demo
+🔗 [View Live Project on Render](https://contact-book-vbz7.onrender.com)
+
+
 ## 🚀 Features
 
 - 👤 User authentication (Login / Logout / Register)
@@ -26,6 +30,14 @@ It allows users to **add, view, search, update, and delete** contacts securely w
 | Database | SQLite (default Django DB) |
 | Authentication | Django’s built-in `User` model |
 | Alerts | Django `messages` framework |
+| Hosting | Render |
 
 ---
 
+##  Setup Instructions
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/<your-username>/contact-book.git
+   cd contact-book
+   cd contact
+   python manage.py runserver
